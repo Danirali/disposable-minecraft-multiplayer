@@ -1,5 +1,5 @@
 # Run Server
-`docker run --name mc-paper-server --net=host -v ./data:/data -e MEMORY=1520M -e TYPE=PAPER -e VERSION=LATEST -e EULA=TRUE itzg/minecraft-server`
+`docker run --name mc-paper-server --net=host -v ./data:/data -e TYPE=PAPER -e VERSION=LATEST -e EULA=TRUE -e MEMORY=1520M -e INNIT=MEMORY=128M itzg/minecraft-server`
 
 # Download Latest Plugins
 ```
