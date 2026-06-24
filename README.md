@@ -1,12 +1,9 @@
-# disposable-minecraft-multiplayer
-A disposable multiplayer Minecraft server which retains only settings.
+# Run Server
+`docker run --name mc-paper-server --net=host -v ./data:/data -e MEMORY=1520M -e TYPE=PAPER -e VERSION=LATEST -e EULA=TRUE itzg/minecraft-server`
 
-
-To run:
-1) Navigate to folder of choice (powershell on windows) `cd ~/Documents/minecraft-server`
-2) Run server using command:
-   `docker run --restart unless-stopped -p 19132:19132 -p 25565:25565 --name=disposable-mc-server -v ./data:/data -e MEMORY=2G danirali2007/disposable-minecraft-multiplayer`
-
-This server retains world data and settings, you just have to delete and re-run the docker command to update to last paper version.
-
-To ensure ease-of-use, geyser and floodgate are pre-installed for multiplayer and crossplatform play.
+# Download Latest Plugins
+```
+curl -o /plugins/ViaVersion.jar "https://hangar.papermc.io/api/v1/projects/ViaVersion/ViaVersion/versions/latest/download" && \
+curl -o /plugins/Geyser-Spigot.jar "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot" && \
+curl -o /plugins/Floodgate-Spigot.jar "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot"
+```
