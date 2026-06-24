@@ -1,9 +1,11 @@
 # Run Server
-`docker run --name mc-paper-server --net=host -v ./data:/data -e TYPE=PAPER -e VERSION=LATEST -e EULA=TRUE -e MEMORY=1520M -e INNIT=MEMORY=128M itzg/minecraft-server`
+`docker run --name disposable-mc-server -p 19132/udp -p 25565:25565 -p 7777:7777 -e MEMORY_MIN="128M" -e MEMORY_MAX="1G" -v ./data:/minecraft/data danirali2007/disposable-minecraft-multiplayer`
 
-# Download Latest Plugins
-```
-curl -o /plugins/ViaVersion.jar "https://hangar.papermc.io/api/v1/projects/ViaVersion/ViaVersion/versions/latest/download" && \
-curl -o /plugins/Geyser-Spigot.jar "https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot" && \
-curl -o /plugins/Floodgate-Spigot.jar "https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot"
-```
+# View Dashboard
+To view the dashboard, access the port `7777` on the IP address the container is running on. For example: `192.168.0.100:7777`
+
+# Ports
+This container relies on three ports to run smoothly;
+1) Java port (25565)
+2) Bedrock port (19132)
+3) Dashboard (7777)
