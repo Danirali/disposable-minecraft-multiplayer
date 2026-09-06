@@ -57,5 +57,7 @@ The image is structurally disposable, meaning the application layer can be safel
 
 ## Guidance for non-technical users
 
+The idea of this container is to be able to launch a fresh install of the latest update every time you build the container, whilst keeping your world data. Every time the container is restarted or rebooted, the latest version for the shipped plugins are fetched.
+
 <img width="460" height="693" alt="Screenshot 2026-09-06 at 14 02 42" src="https://github.com/user-attachments/assets/5047fbca-f97a-45ec-a9b6-50e7646a1c36" />
 
