@@ -19,11 +19,19 @@ docker run -d --name mc-server \
   -e MC_CONTAINER_NAME="mc-server" \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ./data:/minecraft/data \
-  danirali2007/disposable-minecraft-multiplayer
+  danirali2007/disposable-minecraft-multiplayer:amd64
 ```
-Windows:
+X64 / X86 / Intel / AMD Systems:
 ```
-docker run -d --name mc-server -p 25565:25565 -p 19132:19132/udp -p 7777:7777 -e MEMORY_MIN="128M" -e MEMORY_MAX="2G" -e VIA_VERSION_BUILD="5.11.0" -e MC_CONTAINER_NAME="mc-server" -v /var/run/docker.sock:/var/run/docker.sock -v ./data:/minecraft/data danirali2007/disposable-minecraft-multiplayer
+docker run -d --name mc-server -p 25565:25565 -p 19132:19132/udp -p 7777:7777 -e MEMORY_MIN="128M" -e MEMORY_MAX="2G" -e VIA_VERSION_BUILD="5.11.0" -e MC_CONTAINER_NAME="mc-server" -v /var/run/docker.sock:/var/run/docker.sock -v ./data:/minecraft/data danirali2007/disposable-minecraft-multiplayer:amd64
+```
+ARM64 Systems:
+```
+docker run -d --name mc-server -p 25565:25565 -p 19132:19132/udp -p 7777:7777 -e MEMORY_MIN="128M" -e MEMORY_MAX="2G" -e VIA_VERSION_BUILD="5.11.0" -e MC_CONTAINER_NAME="mc-server" -v /var/run/docker.sock:/var/run/docker.sock -v ./data:/minecraft/data danirali2007/disposable-minecraft-multiplayer:arm64
+```
+Apple Silicon Macs:
+```
+docker run -d --name mc-server -p 25565:25565 -p 19132:19132/udp -p 7777:7777 -e MEMORY_MIN="128M" -e MEMORY_MAX="2G" -e VIA_VERSION_BUILD="5.11.0" -e MC_CONTAINER_NAME="mc-server" -v /var/run/docker.sock:/var/run/docker.sock -v ./data:/minecraft/data danirali2007/disposable-minecraft-multiplayer:apple-silicon
 ```
 
 ## 📊 Monitoring Dashboard
