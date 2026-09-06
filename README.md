@@ -21,6 +21,8 @@ docker run -d --name mc-server \
   -v ./data:/minecraft/data \
   danirali2007/disposable-minecraft-multiplayer
 ```
+Windows:
+`docker run -d --name mc-server -p 25565:25565 -p 19132:19132/udp -p 7777:7777 -e MEMORY_MIN="128M" -e MEMORY_MAX="2G" -e VIA_VERSION_BUILD="5.11.0" -e MC_CONTAINER_NAME="mc-server" -v /var/run/docker.sock:/var/run/docker.sock -v ./data:/minecraft/data danirali2007/disposable-minecraft-multiplayer`
 
 ## 📊 Monitoring Dashboard
 The container includes an integrated socket-query web management panel that does not rely on external APIs. It allows you to monitor live player sessions, execute online Paper JAR updates, change display IPs, and restart the container directly from the web interface.
