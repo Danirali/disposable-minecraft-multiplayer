@@ -27,7 +27,9 @@ docker run -d --name disposable-mc-server \
 ## 📊 Monitoring Dashboard
 The container includes an integrated socket-query web management panel that does not rely on external APIs. It allows you to monitor live player sessions, execute online Paper JAR updates, change display IPs, and restart the container directly from the web interface.
 To view the status of your Java engine and Bedrock proxy layer, access port 7777 on your browser:
+<br>
 👉 Local: http://localhost:7777
+<br>
 👉 Network: http://<YOUR_SERVER_IP>:7777 (e.g., http://192.168.0.100:7777)
 
 ## 🔌 Network Port Mappings
