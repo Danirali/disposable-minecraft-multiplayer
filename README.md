@@ -16,6 +16,8 @@ docker run --name disposable-mc-server \
   -e MEMORY_MIN="128M" \
   -e MEMORY_MAX="1G" \
   -e VIA_VERSION_BUILD="5.11.0" \
+  -e PAPER_VERSION="26.2" \
+  -e PAPER_BUILD="121" \
   -v ./data:/minecraft/data \
   danirali2007/disposable-minecraft-multiplayer
 ```
