@@ -15,6 +15,7 @@ docker run --name disposable-mc-server \
   -p 7777:7777 \
   -e MEMORY_MIN="128M" \
   -e MEMORY_MAX="1G" \
+  -e VIA_VERSION_BUILD="5.11.0" \
   -v ./data:/minecraft/data \
   danirali2007/disposable-minecraft-multiplayer
 ```
@@ -37,6 +38,7 @@ You can scale the hardware resources allocated to the Java Virtual Machine dynam
 •	MEMORY_MAX: The maximum allowed RAM boundary before container mitigation (Default: 1520M).
 •	GC_THREADS: Number of parallel CPU threads dedicated to Java Garbage Collection (Default: 2).
 •	ASYNC_THREADS: CPU threads allocated specifically for asynchronous chunk generation and loading (Default: 4).
+• VIA_VERSION_BUILD: Specifies the which version of ViaVersion to use.
 Example with CPU Tuning and 4GB RAM:
 ```docker run --name disposable-mc-server \
   --cpus="4.0" \
