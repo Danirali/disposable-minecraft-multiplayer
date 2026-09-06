@@ -14,13 +14,11 @@ docker run -d --name disposable-mc-server \
   -p 19132:19132/udp \
   -p 7777:7777 \
   -e MEMORY_MIN="128M" \
-  -e MEMORY_MAX="1G" \
+  -e MEMORY_MAX="2G" \
   -e VIA_VERSION_BUILD="5.11.0" \
-  -e MC_CONTAINER_NAME="disposable-mc-server" \
-  -e FLASK_SECRET_KEY="change-me-in-production" \
+  -e MC_CONTAINER_NAME="mc-server" \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ./data:/minecraft/data \
-  -v ./credentials:/minecraft/credentials \
   danirali2007/disposable-minecraft-multiplayer
 ```
 
@@ -31,6 +29,10 @@ To view the status of your Java engine and Bedrock proxy layer, access port 7777
 👉 Local: http://localhost:7777
 <br>
 👉 Network: http://<YOUR_SERVER_IP>:7777 (e.g., http://192.168.0.100:7777)
+
+Default credentials:
+Username: admin
+Password: minrcaft-admin
 
 ## 🔌 Network Port Mappings
 This container relies on three primary port allocations to handle connections smoothly:
