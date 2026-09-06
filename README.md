@@ -54,3 +54,8 @@ Example with CPU Tuning and 4GB RAM:
 The image is structurally disposable, meaning the application layer can be safely updated or deleted. Your maps, player credentials, and configs remain isolated and secure on the host machine via the volume mount flag:
 •	-v ./data:/minecraft/data: Maps your local directory to the internal environment data node.
 ### 💡 Tip: If you wish to run a background tunnel via playit.gg, ensure your playit.toml config file is saved inside this /minecraft/data path to keep your custom static domain mapped between container rebuilds.
+
+## Guidance for non-technical users
+
+<img width="460" height="693" alt="Screenshot 2026-09-06 at 14 02 42" src="https://github.com/user-attachments/assets/5047fbca-f97a-45ec-a9b6-50e7646a1c36" />
+
