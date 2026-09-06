@@ -34,9 +34,11 @@ To view the status of your Java engine and Bedrock proxy layer, access port 7777
 <br>
 👉 Network: http://<YOUR_SERVER_IP>:7777 (e.g., http://192.168.0.100:7777)
 
-Default credentials:
+<br>Default Admin Credentials:
+```
 Username: admin
-Password: minrcaft-admin
+Password: minercaft-admin
+```
 
 ## 🔌 Network Port Mappings
 This container relies on three primary port allocations to handle connections smoothly:
@@ -70,7 +72,7 @@ docker run -d --name disposable-mc-server \
   -e GC_THREADS="2" \
   -e ASYNC_THREADS="4" \
   -e VIA_VERSION_BUILD="5.11.0" \
-  -e TARGET_VERSION="1.21.1" \
+  -e TARGET_VERSION="26.2" \
   -e MC_CONTAINER_NAME="disposable-mc-server" \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ./data:/minecraft/data \
@@ -79,7 +81,7 @@ docker run -d --name disposable-mc-server \
 ```
 
 ## 💾 Data Persistence & Volume Mounts
-The image is structurally disposable, meaning the application layer can be safely updated or deleted without losing your world or administrative login settings.
+The image is structurally disposable, meaning the application layer can be safely updated or deleted without losing your world or administrative login settings. However, the option to update the server without deleting the container is available from the UI.
 ```
 -v ./data:/minecraft/data: Maps your local directory to internal server storage for maps, player credentials, and plugin configurations.
 -v ./credentials:/minecraft/credentials: Persists web dashboard admin login details and session secrets locally across container reinstalls.
