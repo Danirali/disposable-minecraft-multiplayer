@@ -9,7 +9,7 @@ A lightweight, isolated, single-container Minecraft server featuring **Paper Spi
 To fire up the container with default allocations, credential persistence, and administrative control permissions, run the following command in your terminal:
 
 ```
-docker run -d --name disposable-mc-server \
+docker run -d --name mc-server \
   -p 25565:25565 \
   -p 19132:19132/udp \
   -p 7777:7777 \
