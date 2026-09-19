@@ -199,7 +199,7 @@ try = [
   "city.sub.duckdns.org" = ["city"]
 ```
 
-For each server enter their respective folders and append paper-world.yml:
+For each server enter their respective folders and append config/paper-global.yml:
 ```
 proxies:
   velocity:
