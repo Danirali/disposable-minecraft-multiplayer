@@ -1,6 +1,6 @@
 # Disposable Minecraft Multiplayer Server ⛏️
 
-### Planning on running multiple servers? (Click here)[# Running multiple servers with Velocity]
+### Planning on running multiple servers? [Click here](#running-multiple-servers-with-velocity)
 
 A lightweight, isolated, single-container Minecraft server featuring **Paper Spigot** with cross-play support (**Geyser/Floodgate**) and an integrated real-time **Flask Dashboard**. Perfect for setting up high-performance, temporary, or persistent multiplayer environments instantly.
 
