@@ -160,7 +160,7 @@ services:
 
   velocity-proxy:
     image: danirali2007/velocity-proxy:amd64
-    name: velocity-proxy
+    container_name: velocity-proxy
     restart: unless-stopped
     ports:
       - "25565:25565"
