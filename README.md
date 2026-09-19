@@ -1,5 +1,7 @@
 # Disposable Minecraft Multiplayer Server ⛏️
 
+### Planning on running multiple servers? Click here
+
 A lightweight, isolated, single-container Minecraft server featuring **Paper Spigot** with cross-play support (**Geyser/Floodgate**) and an integrated real-time **Flask Dashboard**. Perfect for setting up high-performance, temporary, or persistent multiplayer environments instantly.
 
 ---
@@ -100,7 +102,108 @@ The image is structurally disposable, meaning the application layer can be safel
 ## 📖 Guidance for Non-Technical Users
 The main goal of this container is convenience: you get a fresh, optimized server installation with the latest plugin builds every time the container boots, while keeping your world data and logins completely safe.
 Every restart automatically syncs the latest compatible plugin dependencies.
+
 Server administration (restarts, IP display adjustments, Paper core upgrades) can be managed visually via the Dashboard at `http://localhost:7777` without interacting with the terminal.
 
 <img width="460" height="693" alt="Screenshot 2026-09-06 at 14 02 42" src="https://github.com/user-attachments/assets/5047fbca-f97a-45ec-a9b6-50e7646a1c36" />
 
+---
+
+# Running multiple servers with Velocity
+
+Run as a docker compose:
+
+`docker-compose.yml`
+<br>
+```
+name: minecraft-servers
+networks:
+  mc-network:
+    driver: bridge
+
+services:
+  mc-server-0:
+    image: danirali2007/disposable-minecraft-multiplayer:amd64
+    container_name: mc-server-0
+    restart: unless-stopped
+    ports:
+       - "7777:7777"
+       - "8100:8100"
+    environment:
+      - MEMORY_MIN=128M
+      - MEMORY_MAX=2G
+      - VIA_VERSION_BUILD=5.11.0
+      - MC_CONTAINER_NAME=mc-server-0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./survival/data:/minecraft/data
+    networks:
+      - mc-network
+  
+  mc-server-1:
+    image: danirali2007/disposable-minecraft-multiplayer:amd64
+    container_name: mc-server-1
+    restart: unless-stopped
+    ports:
+       - "7778:7777"
+       - "8101:8100"
+    environment:
+      - MEMORY_MIN=128M
+      - MEMORY_MAX=2G
+      - VIA_VERSION_BUILD=5.11.0
+      - MC_CONTAINER_NAME=mc-server-1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./city/data:/minecraft/data
+    networks:
+      - mc-network
+
+  velocity-proxy:
+    image: danirali2007/velocity-proxy:amd64
+    name: velocity-proxy
+    restart: unless-stopped
+    ports:
+      - "25565:25565"
+      - "19132:19132/udp"
+    environment:
+      - MEMORY_MIN=64M
+      - MEMORY_MAX=512M
+    volumes:
+      - ./velocity-config:/velocity/runtime
+    networks:
+      - mc-network
+```
+
+In the folder velocity-config, save latest velocity and save as velocity.jar, add file forwarding.secret with your password and velocity.toml with your config.
+
+Example velocity.toml:
+```
+bind = "0.0.0.0:25565"
+motd = "Welcome to the Network!"
+show-max-players = 20
+online-mode = true
+
+player-info-forwarding-mode = "MODERN"
+forwarding-secret-file = "forwarding.secret"
+
+[servers]
+  survival = "mc-server-0:25565"
+  city = "mc-server-1:25565"
+
+try = [
+  "survival"
+]
+
+[forced-hosts]
+  "sub.duckdns.org" = ["survival"]
+  "city.sub.duckdns.org" = ["city"]
+```
+
+For each server enter their respective folders and append paper-world.yml:
+```
+proxies:
+  velocity:
+    enabled: true
+    online-mode: true
+    secret: "your-random-secret-key-123"
+```
